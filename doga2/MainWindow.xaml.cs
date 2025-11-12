@@ -33,9 +33,18 @@ public partial class MainWindow : Window
                 list.Items.Add($"{name?.Text} - {priceOfItem} Ft - {quantityOfItem} db");
                 allQuantity += quantityOfItem;
                 stats.Content = $"Összes termék darabszáma: {allQuantity} db";
+                name.Text = "";
+                price.Text = "";
+                quantity.Text = "";
             } else
             {
-                MessageBox.Show("Hibás adatbevitel!");
+                if (!double.TryParse(price.Text, out var priceOfItem2))
+                {
+                    MessageBox.Show("Hibás ár!");
+                } else
+                {
+                    MessageBox.Show("Hibás darabszám!");
+                }
             }
         } else
         {
@@ -45,6 +54,11 @@ public partial class MainWindow : Window
 
     private void delete_Click(object sender, RoutedEventArgs e)
     {
+        if (list.SelectedItem == null)
+        {
+            MessageBox.Show("Nincs kijelölve elem!");
+            return;
+        }
         var selectedItem = list.SelectedItem.ToString();
         var parts = selectedItem?.Split('-');
         if (selectedItem != null && parts != null)
@@ -77,6 +91,8 @@ public partial class MainWindow : Window
         }
 
         File.AppendAllLines("raktar.txt", list.Items.Cast<string>());
+
+        MessageBox.Show("Sikeres mentés!");
     }
 
     private void load_Click(object sender, RoutedEventArgs e)
