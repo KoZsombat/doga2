@@ -1,0 +1,43 @@
+﻿<Window x:Class="doga2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:doga2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Termék neve:" Grid.Row="0" Margin="0,5"/>
+        <TextBox x:Name="name" Grid.Row="0" Margin="100,5,0,5" Width="200"/>
+
+        <TextBlock Text="Egységár:" Grid.Row="1" Margin="0,5"/>
+        <TextBox x:Name="price" Grid.Row="1" Margin="100,5,0,5" Width="200"/>
+
+        <TextBlock Text="Darabszám:" Grid.Row="2" Margin="0,5"/>
+        <TextBox x:Name="quantity" Grid.Row="2" Margin="100,5,0,5" Width="200"/>
+
+        <Label x:Name="stats" Grid.Row="3" Foreground="Green"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10">
+            <Button x:Name="add" Content="Hozzáadás" Width="100"
+                    Click="add_Click"/>
+            <Button x:Name="save" Content="Mentés fájlba" Width="100" Margin="10,0,0,0"
+                    Click="save_Click"/>
+            <Button x:Name="load" Content="Betöltés" Width="100" Margin="10,0,0,0"
+                    Click="load_Click"/>
+            <Button x:Name="delete" Content="Törlés" Width="100" Margin="10,0,0,0"
+                    Click="delete_Click"/>
+        </StackPanel>
+
+        <ListBox x:Name="list" Grid.Row="5" Margin="0,10,0,0"/>
+    </Grid>
+</Window>
