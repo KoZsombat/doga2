@@ -38,7 +38,7 @@ public partial class MainWindow : Window
                 quantity.Text = "";
             } else
             {
-                if (!double.TryParse(price.Text, out var priceOfItem2))
+                if (!double.TryParse(price.Text, out var priceOfItem2) || priceOfItem < 0)
                 {
                     MessageBox.Show("Hibás ár!");
                 } else
