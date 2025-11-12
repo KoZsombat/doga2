@@ -28,7 +28,7 @@ public partial class MainWindow : Window
     {
         if (name.Text != "" || price.Text != "" || quantity.Text != "")
         {
-            if (double.TryParse(price.Text, out var priceOfItem) && int.TryParse(quantity.Text, out var quantityOfItem))
+            if (double.TryParse(price.Text, out var priceOfItem) && int.TryParse(quantity.Text, out var quantityOfItem) && priceOfItem > 0 && quantityOfItem > 0)
             { 
                 list.Items.Add($"{name?.Text} - {priceOfItem} Ft - {quantityOfItem} db");
                 allQuantity += quantityOfItem;
@@ -38,11 +38,11 @@ public partial class MainWindow : Window
                 quantity.Text = "";
             } else
             {
-                if (!double.TryParse(price.Text, out var priceOfItem2) || priceOfItem < 0)
+                if (!double.TryParse(price.Text, out var priceOfItem2) || priceOfItem2 < 0)
                 {
                     MessageBox.Show("Hibás ár!");
                 } else
-                {
+                    {
                     MessageBox.Show("Hibás darabszám!");
                 }
             }
